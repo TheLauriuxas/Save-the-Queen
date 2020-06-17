@@ -13,7 +13,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -29,6 +29,15 @@ public class Movement : MonoBehaviour
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
             gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0f, jumpHight, 0f), ForceMode.Impulse);
+            isGrounded = false;
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Ground")
+        {
+            isGrounded = true;
         }
     }
 }
