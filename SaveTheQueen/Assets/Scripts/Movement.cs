@@ -20,8 +20,11 @@ public class Movement : MonoBehaviour
     void Update()
     {
         Jump();
-            Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
-            transform.position += movement * Time.deltaTime * playerSpeed;
+            Vector3 horizontalMovement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
+            transform.position += horizontalMovement * Time.deltaTime * playerSpeed;
+
+             Vector3 verticalMovement = new Vector3(0f, 0f, Input.GetAxis("Vertical"));
+             transform.position += verticalMovement * Time.deltaTime * playerSpeed;
     }
 
     void Jump()
