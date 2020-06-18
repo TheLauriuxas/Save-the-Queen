@@ -5,7 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public float playerSpeed = 5f;
-    public float jumpHight = 5f;
+    public float jumpHeight = 5f;
 
     public bool isGrounded = false;
 
@@ -20,18 +20,18 @@ public class Movement : MonoBehaviour
     void Update()
     {
         Jump();
-            Vector3 horizontalMovement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
+            Vector3 horizontalMovement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f); //1f, 0f, 0f, Left, right movement.
             transform.position += horizontalMovement * Time.deltaTime * playerSpeed;
 
-             Vector3 verticalMovement = new Vector3(0f, 0f, Input.GetAxis("Vertical"));
-             transform.position += verticalMovement * Time.deltaTime * playerSpeed;
+            Vector3 verticalMovement = new Vector3(0f, 0f, Input.GetAxis("Vertical"));//0f, 0f, 1f, up, down movement.
+            transform.position += verticalMovement * Time.deltaTime * playerSpeed;
     }
 
     void Jump()
     {
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
-            gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0f, jumpHight, 0f), ForceMode.Impulse);
+            gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0f, jumpHeight, 0f), ForceMode.Impulse);
             isGrounded = false;
         }
     }
